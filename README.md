@@ -1,4 +1,4 @@
-## [`Project Heimir`](http://lxrbckl.com/Project-Kinma)
+## [`Project Kinma`](http://lxrbckl.com/Project-Kinma)
 > Backup your GitHub projects to a local directory daily.
 
 ### `Installation`
