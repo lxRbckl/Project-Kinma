@@ -39,7 +39,7 @@ async def backupData() -> None:
 
     # clear directory <
     # iterate (repository per user) <
-    system(command = f'rm -r {date}')
+    system(command = f'rm -r -f {date}')
     system(command = f'mkdir {date}')
     for r in [r.full_name for u in user for r in gGithub.get_user(u).get_repos()]:
 
