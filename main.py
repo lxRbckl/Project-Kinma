@@ -54,6 +54,8 @@ async def backupData() -> None:
 
     # >
 
+    await kinma.get_channel(gChannel).send('`Running`')
+
 
 @kinma.event
 async def on_ready(): backupData.start()
