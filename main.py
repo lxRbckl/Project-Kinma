@@ -2,8 +2,8 @@
 
 
 # import <
-from time import sleep
 from os.path import isdir
+from asyncio import sleep
 from github import Github
 from discord import Intents
 from lxRbckl import requestsGet
