@@ -26,7 +26,7 @@ gSettingLink = 'https://github.com/lxRbckl/Project-Skotak/raw/main/setting.json'
 
 # >
 
-
+print(gDirectory) # remove
 @tasks.loop(hours = 12)
 async def backupData() -> None:
     '''  '''
@@ -39,13 +39,14 @@ async def backupData() -> None:
 
     # clear directory <
     # iterate (repository per user) <
-    system(command = f'rm -r -f {date}')
-    system(command = f'mkdir {date}')
+    system(command = f'sudo rm -r -f {date}')
+    system(command = f'sudo mkdir {gDirectory}/{date}')
     for r in [r.full_name for u in user for r in gGithub.get_user(u).get_repos()]:
 
-        system(command = 'git clone {} {}/{}'.format(
+        system(command = 'sudo git clone {} {}/{}/{}'.format(
 
             f'https://github.com/{r}.git',
+            gDirectory,
             date,
             r.split('/')[1]
 
