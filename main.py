@@ -26,6 +26,7 @@ gSettingLink = 'https://github.com/lxRbckl/Project-Skotak/raw/main/setting.json'
 
 # >
 
+
 @tasks.loop(hours = 12)
 async def backupData():
     '''  '''
