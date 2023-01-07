@@ -26,7 +26,6 @@ gSettingLink = 'https://github.com/lxRbckl/Project-Skotak/raw/main/setting.json'
 
 # >
 
-print(gDirectory) # remove
 @tasks.loop(hours = 12)
 async def backupData() -> None:
     '''  '''
