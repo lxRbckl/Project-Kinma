@@ -1,2 +1,2 @@
-## [`Project Kinma`](http://lxrbckl.com/Project-Kinma)
-> Backup your GitHub projects to a local directory daily. Fall 2022.
+### `Project Kinma`
+> Create daily backups of your GitHub projects to a local directory. Fall 2022.
