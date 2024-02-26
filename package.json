@@ -1,0 +1,16 @@
+{
+  "name": "project-kinma",
+  "version": "1.0.0",
+  "description": "> Create daily backups of your GitHub projects to a local directory. Fall 2022.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@octokit/rest": "^20.0.2",
+    "discord.js": "^14.14.1",
+    "lxrbckl": "^6.5.0"
+  }
+}
