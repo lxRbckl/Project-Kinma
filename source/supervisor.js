@@ -1,33 +1,31 @@
 // import <
 const octokit = require('@octokit/rest');
-const {fileGet, axiosGet} = require('lxrbckl');
 
 // >
 
 
 class supervisor {
 
-   constructor() {
+   constructor(objDatabase) {
 
-      this.developerMode = true;
-      this.dataLink = '';
-
-   }
-
-
-
-
-
-   getRepositories(pUser) {
-
-
+      this.database = objDatabase;
+      this.messageDepth = 100; // process.env.messageDepth;
 
    }
 
 
-   getMessages(pChannel) {
+   async getRepositories() {
+
+      var rData = {};
+      let users = await this.database.loadData()['users'];
+
+   }
 
 
+   async getChannels(objClient) {
+
+      var rData = {};
+      let channels = await this.database.loadData()['channels'];
 
    }
 
@@ -38,3 +36,15 @@ class supervisor {
 module.exports = supervisor;
 
 // >
+
+
+(async () => {
+
+   let x = new supervisor();
+
+
+
+})();
+
+
+// 'jordyn says hi!'
