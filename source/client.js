@@ -1,4 +1,13 @@
 // import <
+const cron = require('node-cron');
+const {
+
+   Client,
+   Routes,
+   IntentsBitField
+
+} = require('discord.js');
+
 const update = require('./command/update.js');
 
 // >
@@ -9,11 +18,13 @@ class client {
    constructor({
 
       pToken,
+      objDatabase,
       objSupervisor
 
    }) {
 
       this.token = pToken;
+      this.database = objDatabase;
       this.supervisor = objSupervisor;
       this.guildId = '768020237139705857'; // process.env.guildId;
       this.channelId = '1210158694919176222'; // process.env.channelId;
@@ -65,11 +76,18 @@ class client {
 
       this.client.on('ready', async () => {
 
-         cron.schedule('0 0 * * *', async () => {
+         await this.supervisor.getChannels({
 
-            //
-
+            objClient : this.client,
+            pConfig : await this.database.loadConfig()
+   
          });
+
+         // cron.schedule('0 0 * * *', async () => {
+
+         //    //
+
+         // });
 
       });
 
@@ -93,7 +111,7 @@ class client {
 
       );
 
-      this.listen();
+      // this.listen();
       this.schedule();
 
    }

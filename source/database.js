@@ -10,21 +10,25 @@ class database {
 
       this.developerMode = true;
       this.dataFilePath = 'data.json'; // process.env.dataFilePath;
-      this.dataLink = 'https://raw.githubusercontent.com/lxRbckl/Project-Kinma/Project-Kinma-2/data.json'; // process.env.dataLink;
+      this.configFilePath = 'config.json'; // process.env.cofigFilePath;
+      this.configLink = 'https://raw.githubusercontent.com/lxRbckl/Project-Kinma/Project-Kinma-2/settings.json'; // process.env.configLink;
 
    }
 
 
-   async loadData() {
+   async loadConfig() {
 
       return await {
 
-         false : async () => {return axiosGet({pURL : this.dataLink});},
-         true : async () => {return fileGet({pFile : this.dataFilePath});}
+         false : async () => {return axiosGet({pURL : this.configLink});},
+         true : async () => {return fileGet({pFile : this.configFilePath});}
 
       }[this.developerMode]();
 
    }
+
+
+   async loadData() {return await fileGet({pFile : this.dataFilePath});}
 
 }
 

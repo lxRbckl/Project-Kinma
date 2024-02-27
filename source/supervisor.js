@@ -6,26 +6,51 @@ const octokit = require('@octokit/rest');
 
 class supervisor {
 
-   constructor(objDatabase) {
+   constructor(pToken) {
 
-      this.database = objDatabase;
-      this.messageDepth = 100; // process.env.messageDepth;
-
-   }
-
-
-   async getRepositories() {
-
-      var rData = {};
-      let users = await this.database.loadData()['users'];
+      this.depth = 100; // process.env.messageDepth;
 
    }
 
 
-   async getChannels(objClient) {
+   async getRepositories({
+      
+      pData,
+      objClient
+   
+   }) {
 
       var rData = {};
-      let channels = await this.database.loadData()['channels'];
+      // let users = (await objDatabase.loadData())['users'];
+
+   }
+
+
+   async getChannels({
+      
+      pData,
+      pConfig,
+      objClient
+   
+   }) {
+
+      pConfig['channels'].map(async c => {
+
+         let channel = await objClient.channels.fetch(c);
+         let messages = await channel.messages.fetch({limit : this.depth});
+         for (const m of messages.values()) {
+
+            console.log('=====');
+            console.log(c);
+            console.log(JSON.stringify(m.content));
+
+            pData['channels'][c][JSON.stringify(m.content)] = 1;
+
+         }
+         
+      });
+
+      // console.log('data', pData); // remove
 
    }
 
@@ -38,13 +63,4 @@ module.exports = supervisor;
 // >
 
 
-(async () => {
-
-   let x = new supervisor();
-
-
-
-})();
-
-
-// 'jordyn says hi!'
+// < 'jordyn says hi!' > //
