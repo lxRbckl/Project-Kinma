@@ -1,7 +1,15 @@
 class update {
 
-   constructor(objSupervisor) {
+   constructor({
+      
+      objClient,
+      objDatabase,
+      objSupervisor
+      
+   }) {
 
+      this.client = objClient;
+      this.database = objDatabase;
       this.supervisor = objSupervisor;
 
    }
@@ -20,7 +28,16 @@ class update {
    }
 
 
-   async run() {return await this.supervisor.run()}
+   async run() {
+      
+      return await this.supervisor.run({
+
+         objClient : this.client,
+         objDatabase : this.database
+
+      });
+   
+   }
 
 }
 

@@ -26,15 +26,9 @@ class client {
       this.token = pToken;
       this.database = objDatabase;
       this.supervisor = objSupervisor;
-      this.guildId = '768020237139705857'; // process.env.guildId;
-      this.channelId = '1210158694919176222'; // process.env.channelId;
-      this.applicationId = '1210136647992344596'; // process.env.applicationId; // 1211692530069143552 
-
-      this.commands = {
-
-         'update' : new update(this.supervisor)
-
-      };
+      this.guildId = process.env.guildId;
+      this.channelId = process.env.channelId;
+      this.applicationId = process.env.applicationId; 
 
       this.client = new Client({
 
@@ -49,6 +43,18 @@ class client {
          ]
 
       });
+
+      this.commands = {
+
+         'update' : new update({
+            
+            objClient : this.client,
+            objDatabase : this.database,
+            objSupervisor : this.supervisor
+         
+         })
+
+      };
 
    }
 
@@ -65,7 +71,9 @@ class client {
 
       this.client.on('interactionCreate', async (interaction) => {
 
-         //
+         let command = this.commands[interaction.commandName];
+         let result = await command.run();
+         this.message(result);
 
       });
 
@@ -76,18 +84,17 @@ class client {
 
       this.client.on('ready', async () => {
 
-         await this.supervisor.getChannels({
+         cron.schedule('0 0 * * *', async () => {
 
-            objClient : this.client,
-            pConfig : await this.database.loadConfig()
+            let result = await this.supervisor.run({
+
+               objClient : this.client,
+               objDatabase : this.database
    
+            });
+            this.message(result);
+
          });
-
-         // cron.schedule('0 0 * * *', async () => {
-
-         //    //
-
-         // });
 
       });
 
@@ -111,7 +118,9 @@ class client {
 
       );
 
-      // this.listen();
+      await this.database.buildDatabase();
+
+      this.listen();
       this.schedule();
 
    }
