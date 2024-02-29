@@ -1,20 +1,21 @@
 FROM node:18.16.0
 
 
-ENV tokenOctokit undefined
-ENV tokenDiscord undefined
+# referencing docker compose #
+ENV tokenOctokit ${tokenOctokit}
+ENV tokenDiscord ${tokenDiscord}
 
-ENV guildId undefined
-ENV channelId undefined
-ENV applicationId undefined
+ENV guildId ${guildId}
+ENV channelId ${channelId}
+ENV applicationId ${applicationId}
 
-ENV messageDepth undefined
+ENV messageDepth ${messageDepth}
 
-ENV settingLink undefined
-ENV dataFilePath undefined
-ENV reposFilePath undefined
-ENV settingFilePath undefined
-ENV channelsFilePath undefined
+ENV settingLink ${settingLink}
+ENV dataFilePath ${dataFilePath}
+ENV reposFilePath ${reposFilePath}
+ENV settingFilePath ${settingFilePath}
+ENV channelsFilePath ${channelsFilePath}
 
 
 WORKDIR /app
