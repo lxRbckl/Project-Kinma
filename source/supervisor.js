@@ -72,6 +72,7 @@ class supervisor {
    }) {
 
       let setting = await objDatabase.loadSetting();
+      console.log('setting', setting); // remove
 
       // update channels <
       // update repositories <
