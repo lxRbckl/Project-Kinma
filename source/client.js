@@ -103,8 +103,6 @@ class client {
 
    async run() {
 
-      console.log('V2'); // version //
-
       let commands = Object.values(this.commands);
 
       this.client.login(this.token);
