@@ -22,10 +22,6 @@ class database {
       this.settingFilePath = process.env.settingFilePath;
       this.channelsFilePath = process.env.channelsFilePath;
 
-      console.log(typeof this.settinglink);
-      console.log(typeof this.reposFilePath);
-      console.log(typeof this.channelsFilePath);
-
    }
 
 
@@ -33,7 +29,7 @@ class database {
 
       return await {
 
-         false : async () => {return axiosGet({pURL : this.settingLinks});},
+         false : async () => {return axiosGet({pURL : this.settingLink});},
          true : async () => {return fileGet({pFile : this.settingFilePath});}
 
       }[this.developerMode]();
@@ -62,11 +58,3 @@ class database {
 module.exports = database;
 
 // >
-
-
-(async () => {
-
-   let x = new database();
-   console.log(await x.loadSetting());
-
-})();

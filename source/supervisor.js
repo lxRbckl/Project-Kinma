@@ -10,6 +10,7 @@ class supervisor {
 
    constructor(pToken) {
 
+      this.token = pToken;
       this.depth = process.env.messageDepth;
       this.octokit = new Octokit({auth : this.token});
 
@@ -24,7 +25,7 @@ class supervisor {
    }) {
 
       let day = new Date().getDay();
-      let path = (getProjectPath() + objDatabase.reposFilePath + day);
+      let path = `${getProjectPath()}/${objDatabase.reposFilePath}/${day}`;
 
       // remove outdated dir <
       // add repos/user to new dir <
@@ -71,7 +72,6 @@ class supervisor {
    }) {
 
       let setting = await objDatabase.loadSetting();
-      console.log('setting', setting); // remove
 
       // update channels <
       // update repositories <

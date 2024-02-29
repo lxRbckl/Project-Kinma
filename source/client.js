@@ -90,7 +90,7 @@ class client {
 
                objClient : this.client,
                objDatabase : this.database
-   
+
             });
             this.message(result);
 
