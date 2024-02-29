@@ -118,8 +118,6 @@ class client {
 
       );
 
-      await this.database.buildDatabase();
-
       this.listen();
       this.schedule();
 
