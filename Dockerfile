@@ -12,7 +12,6 @@ ENV applicationId ${applicationId}
 ENV messageDepth ${messageDepth}
 
 ENV settingLink ${settingLink}
-ENV dataFilePath ${dataFilePath}
 ENV reposFilePath ${reposFilePath}
 ENV settingFilePath ${settingFilePath}
 ENV channelsFilePath ${channelsFilePath}

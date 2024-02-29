@@ -18,7 +18,6 @@ class database {
 
       this.developerMode = false;
       this.settingLink = process.env.settingLink;
-      this.dataFilePath = process.env.dataFilePath;
       this.reposFilePath = process.env.reposFilePath;
       this.settingFilePath = process.env.settingFilePath;
       this.channelsFilePath = process.env.channelsFilePath;
@@ -49,24 +48,6 @@ class database {
       let fIn = await fileGet({pFile : fPath, pErrorMessage : {}});
       
       await fileSet({pFile : fPath, pData : {...fIn, ...pData}});
-
-   }
-
-
-   async buildDatabase() {
-
-      let dir = await dirGet({pDir : ''});
-
-      // if (no data) {
-      if (!(dir.includes(this.dataFilePath))) {
-
-         await dirSet({pDir : this.dataFilePath});
-         await dirSet({pDir : this.reposFilePath});
-         await dirSet({pDir : this.channelsFilePath});
-
-      }
-
-      // >
 
    }
 
